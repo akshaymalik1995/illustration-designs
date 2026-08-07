@@ -12,23 +12,30 @@ paths:
       summary: List all available illustration styles with id, name and tagline.
       responses:
         "200":
-          description: List of styles
+          description: Sections of styles
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  styles:
+                  sections:
                     type: array
                     items:
                       type: object
                       properties:
-                        id:
+                        title:
                           type: string
-                        name:
-                          type: string
-                        tagline:
-                          type: string
+                        styles:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              tagline:
+                                type: string
   /styles/{styleId}.md:
     get:
       operationId: getStyle
