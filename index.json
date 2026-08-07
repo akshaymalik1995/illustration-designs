@@ -1,0 +1,20 @@
+{
+  "styles": [
+    { "id": "flat-vector-editorial", "name": "Flat Vector Editorial", "tagline": "Premium geometric flat vector, muted palette, negative space" },
+    { "id": "hand-drawn-sketch", "name": "Hand-Drawn Sketch", "tagline": "Loose ink lines, marker accents, notebook charm" },
+    { "id": "isometric", "name": "Isometric", "tagline": "30-degree diorama worlds, crisp vector depth" },
+    { "id": "line-art-minimal", "name": "Minimal Line Art", "tagline": "Monoline strokes, one accent color, vast negative space" },
+    { "id": "watercolor-organic", "name": "Watercolor Organic", "tagline": "Translucent washes, soft bleeds, paper light" },
+    { "id": "retro-mid-century", "name": "Retro Mid-Century", "tagline": "1950s poster shapes, mustard-teal palette, print grain" },
+    { "id": "cut-paper-collage", "name": "Cut-Paper Collage", "tagline": "Layered hand-cut paper, real shadows, tactile depth" },
+    { "id": "blueprint-technical", "name": "Blueprint Technical", "tagline": "Drafted schematics, annotations, engineered elegance" },
+    { "id": "cartoon-character", "name": "Cartoon Character", "tagline": "Expressive characters, bold outlines, animation energy" },
+    { "id": "3d-clay-render", "name": "3D Clay Render", "tagline": "Soft chunky 3D, matte clay, studio pastel light" },
+    { "id": "geometric-abstract", "name": "Geometric Abstract", "tagline": "Bauhaus shapes and grids, meaning through arrangement" },
+    { "id": "painterly-realistic", "name": "Painterly Digital", "tagline": "Visible brushwork, cinematic light, atmosphere" },
+    { "id": "pixel-art", "name": "Pixel Art", "tagline": "16-bit sprites, limited palette, deliberate pixels" },
+    { "id": "gradient-glassmorphism", "name": "Gradient Glass", "tagline": "Luminous gradients, frosted glass, SaaS-hero polish" },
+    { "id": "infographic-dataviz", "name": "Infographic", "tagline": "Icons, flows, and hierarchy — information designed" },
+    { "id": "pop-art-comic", "name": "Pop Art Comic", "tagline": "Halftone dots, bold outlines, splash-page drama" }
+  ]
+}

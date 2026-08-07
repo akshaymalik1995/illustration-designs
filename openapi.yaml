@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: Illustration Style Library
+  description: Fetch illustration style definitions (art-direction prompts) by style id.
+  version: 1.0.0
+servers:
+  - url: https://akshaymalik1995.github.io/illustration-designs
+paths:
+  /index.json:
+    get:
+      operationId: listStyles
+      summary: List all available illustration styles with id, name and tagline.
+      responses:
+        "200":
+          description: List of styles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  styles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        tagline:
+                          type: string
+  /styles/{styleId}.md:
+    get:
+      operationId: getStyle
+      summary: Get the full art-direction prompt for one style by its id.
+      parameters:
+        - name: styleId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Style id from listStyles, e.g. isometric, pixel-art, flat-vector-editorial
+      responses:
+        "200":
+          description: The style prompt as markdown text
+          content:
+            text/markdown:
+              schema:
+                type: string
