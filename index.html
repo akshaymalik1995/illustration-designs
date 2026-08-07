@@ -22,6 +22,8 @@
   .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .card h2 { font-size: 19px; font-weight: normal; }
   .tagline { color: var(--muted); font-size: 14px; flex: 1; }
+  .style-id { font: 12px ui-monospace, Consolas, monospace; color: var(--muted); background: #f2efe9; border: 1px solid var(--line); border-radius: 5px; padding: 3px 8px; cursor: pointer; align-self: flex-start; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .style-id:hover { color: var(--accent); border-color: var(--accent); }
   .row { display: flex; gap: 10px; margin-top: 6px; }
   button { font: 13px Georgia, serif; padding: 7px 14px; border-radius: 6px; border: 1px solid var(--line); background: none; color: var(--ink); cursor: pointer; }
   button:hover { border-color: var(--accent); color: var(--accent); }
@@ -84,6 +86,7 @@ fetch('index.json').then(r => r.json()).then(({sections}) => {
           onerror="if(!this.dataset.p){this.dataset.p=1;this.src='img/${s.id}.png'}else{this.remove()}"></div>
         <div class="body">
           <h2>${s.name}</h2>
+          <code class="style-id" data-id="${s.id}" title="Click to copy id">${s.id}</code>
           <div class="tagline">${s.tagline}</div>
           <div class="row">
             <button class="primary" data-copy="${s.id}">Copy prompt</button>
@@ -98,7 +101,14 @@ fetch('index.json').then(r => r.json()).then(({sections}) => {
   let currentId = null;
 
   root.addEventListener('click', async e => {
-    const copy = e.target.dataset.copy, view = e.target.dataset.view;
+    const copy = e.target.dataset.copy, view = e.target.dataset.view, idChip = e.target.dataset.id;
+    if (idChip) {
+      await navigator.clipboard.writeText(idChip);
+      const orig = e.target.textContent;
+      e.target.textContent = 'copied ✓';
+      setTimeout(() => e.target.textContent = orig, 1200);
+      return;
+    }
     if (copy) {
       await navigator.clipboard.writeText(await loadPrompt(copy));
       e.target.textContent = 'Copied ✓';
