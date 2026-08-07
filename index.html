@@ -14,6 +14,7 @@
   header { max-width: 1100px; margin: 0 auto 40px; }
   h1 { font-size: 34px; font-weight: normal; letter-spacing: -0.5px; }
   header p { color: var(--muted); margin-top: 6px; font-style: italic; }
+  .section-title { max-width: 1100px; margin: 36px auto 18px; font-size: 24px; font-weight: normal; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
   .grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 22px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
   .thumb { aspect-ratio: 4/3; background: linear-gradient(135deg,#e8e3da,#d8d2c6); overflow: hidden; }
@@ -42,7 +43,7 @@
   <h1>Illustration Style Library</h1>
   <p>16 art-direction prompts — pick a style, copy its prompt, or use it through the GPT action.</p>
 </header>
-<div class="grid" id="grid"></div>
+<div id="sections"></div>
 <dialog id="modal">
   <div class="modal-head">
     <h2 id="modal-title"></h2>
@@ -53,39 +54,50 @@
   </div>
   <div class="modal-body"><pre id="modal-pre"></pre></div>
 </dialog>
-<footer>Sample images are temporary CC-licensed placeholders from Openverse; they'll be replaced with generated examples per style.</footer>
+<footer>Core-style images are temporary CC-licensed placeholders from Openverse (<a href="img/CREDITS.md">credits</a>).
+Cookbook styles and previews are from <a href="https://github.com/VigoZhao/AI-Visual-Prompt-Cookbook">AI-Visual-Prompt-Cookbook</a> (MIT License).</footer>
 <script>
-const grid = document.getElementById('grid');
-const cache = {};
+const root = document.getElementById('sections');
+const cache = {}, fileById = {}, nameById = {};
 
 async function loadPrompt(id) {
-  if (!cache[id]) cache[id] = await fetch(`styles/${id}.md`).then(r => r.text());
+  if (!cache[id]) cache[id] = await fetch(fileById[id]).then(r => r.text());
   return cache[id];
 }
 
-fetch('index.json').then(r => r.json()).then(({styles}) => {
-  for (const s of styles) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="thumb"><img src="img/${s.id}.jpg" alt="${s.name} example"
-        onerror="if(!this.dataset.p){this.dataset.p=1;this.src='img/${s.id}.png'}else{this.remove()}"></div>
-      <div class="body">
-        <h2>${s.name}</h2>
-        <div class="tagline">${s.tagline}</div>
-        <div class="row">
-          <button class="primary" data-copy="${s.id}">Copy prompt</button>
-          <button data-view="${s.id}">View prompt</button>
-        </div>
-      </div>`;
-    grid.appendChild(card);
+fetch('index.json').then(r => r.json()).then(({sections}) => {
+  for (const sec of sections) {
+    const h = document.createElement('h2');
+    h.className = 'section-title';
+    h.textContent = sec.title;
+    root.appendChild(h);
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    root.appendChild(grid);
+    for (const s of sec.styles) {
+      fileById[s.id] = s.file;
+      nameById[s.id] = s.name;
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="thumb"><img loading="lazy" src="img/${s.id}.jpg" alt="${s.name} example"
+          onerror="if(!this.dataset.p){this.dataset.p=1;this.src='img/${s.id}.png'}else{this.remove()}"></div>
+        <div class="body">
+          <h2>${s.name}</h2>
+          <div class="tagline">${s.tagline}</div>
+          <div class="row">
+            <button class="primary" data-copy="${s.id}">Copy prompt</button>
+            <button data-view="${s.id}">View prompt</button>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    }
   }
 
   const modal = document.getElementById('modal');
-  const nameById = Object.fromEntries(styles.map(s => [s.id, s.name]));
   let currentId = null;
 
-  grid.addEventListener('click', async e => {
+  root.addEventListener('click', async e => {
     const copy = e.target.dataset.copy, view = e.target.dataset.view;
     if (copy) {
       await navigator.clipboard.writeText(await loadPrompt(copy));
