@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illustration Style Library</title>
+<style>
+  :root {
+    --bg: #f7f5f2; --card: #ffffff; --ink: #1d1c1a; --muted: #6f6a63;
+    --line: #e6e2db; --accent: #b4543a;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.55 Georgia, 'Times New Roman', serif; padding: 48px 24px; }
+  header { max-width: 1100px; margin: 0 auto 40px; }
+  h1 { font-size: 34px; font-weight: normal; letter-spacing: -0.5px; }
+  header p { color: var(--muted); margin-top: 6px; font-style: italic; }
+  .grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 22px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .thumb { aspect-ratio: 4/3; background: linear-gradient(135deg,#e8e3da,#d8d2c6); overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card h2 { font-size: 19px; font-weight: normal; }
+  .tagline { color: var(--muted); font-size: 14px; flex: 1; }
+  .row { display: flex; gap: 10px; margin-top: 6px; }
+  button { font: 13px Georgia, serif; padding: 7px 14px; border-radius: 6px; border: 1px solid var(--line); background: none; color: var(--ink); cursor: pointer; }
+  button:hover { border-color: var(--accent); color: var(--accent); }
+  button.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+  button.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .prompt { display: none; border-top: 1px solid var(--line); padding: 14px 18px; background: #faf9f6; }
+  .prompt.open { display: block; }
+  .prompt pre { white-space: pre-wrap; font: 12.5px/1.5 ui-monospace, Consolas, monospace; color: #3a3733; max-height: 320px; overflow-y: auto; }
+  footer { max-width: 1100px; margin: 48px auto 0; color: var(--muted); font-size: 13px; font-style: italic; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Illustration Style Library</h1>
+  <p>16 art-direction prompts — pick a style, copy its prompt, or use it through the GPT action.</p>
+</header>
+<div class="grid" id="grid"></div>
+<footer>Sample images are temporary CC-licensed placeholders from Openverse; they'll be replaced with generated examples per style.</footer>
+<script>
+const grid = document.getElementById('grid');
+const cache = {};
+
+async function loadPrompt(id) {
+  if (!cache[id]) cache[id] = await fetch(`styles/${id}.md`).then(r => r.text());
+  return cache[id];
+}
+
+fetch('index.json').then(r => r.json()).then(({styles}) => {
+  for (const s of styles) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="thumb"><img src="img/${s.id}.jpg" alt="${s.name} example"
+        onerror="if(!this.dataset.p){this.dataset.p=1;this.src='img/${s.id}.png'}else{this.remove()}"></div>
+      <div class="body">
+        <h2>${s.name}</h2>
+        <div class="tagline">${s.tagline}</div>
+        <div class="row">
+          <button class="primary" data-copy="${s.id}">Copy prompt</button>
+          <button data-view="${s.id}">View prompt</button>
+        </div>
+      </div>
+      <div class="prompt" id="p-${s.id}"><pre></pre></div>`;
+    grid.appendChild(card);
+  }
+
+  grid.addEventListener('click', async e => {
+    const copy = e.target.dataset.copy, view = e.target.dataset.view;
+    if (copy) {
+      await navigator.clipboard.writeText(await loadPrompt(copy));
+      e.target.textContent = 'Copied ✓';
+      setTimeout(() => e.target.textContent = 'Copy prompt', 1500);
+    }
+    if (view) {
+      const box = document.getElementById('p-' + view);
+      if (!box.classList.contains('open')) box.querySelector('pre').textContent = await loadPrompt(view);
+      box.classList.toggle('open');
+      e.target.textContent = box.classList.contains('open') ? 'Hide prompt' : 'View prompt';
+    }
+  });
+});
+</script>
+</body>
+</html>
