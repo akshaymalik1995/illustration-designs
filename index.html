@@ -26,11 +26,13 @@
   button:hover { border-color: var(--accent); color: var(--accent); }
   button.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
   button.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-  dialog { margin: auto; border: none; border-radius: 12px; padding: 0; max-width: 720px; width: calc(100vw - 48px); max-height: 80vh; box-shadow: 0 24px 60px rgba(0,0,0,.25); }
+  dialog { margin: auto; border: none; border-radius: 12px; padding: 0; max-width: 720px; width: calc(100vw - 48px); max-height: 80vh; box-shadow: 0 24px 60px rgba(0,0,0,.25); overflow: hidden; display: none; flex-direction: column; }
+  dialog[open] { display: flex; }
   dialog::backdrop { background: rgba(29,28,26,.55); }
   .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
   .modal-head h2 { font-size: 20px; font-weight: normal; }
-  .modal-body { padding: 18px 22px; overflow-y: auto; max-height: calc(80vh - 70px); }
+  .modal-head { flex-shrink: 0; }
+  .modal-body { padding: 18px 22px; overflow-y: auto; }
   .modal-body pre { white-space: pre-wrap; font: 13px/1.55 ui-monospace, Consolas, monospace; color: #3a3733; }
   footer { max-width: 1100px; margin: 48px auto 0; color: var(--muted); font-size: 13px; font-style: italic; }
 </style>
