@@ -9,7 +9,7 @@ paths:
   /index.json:
     get:
       operationId: listStyles
-      summary: List all available illustration styles with id, name and tagline.
+      summary: REQUIRED whenever the user has not given an exact style id. Returns the catalog of valid style ids - the only source of truth for ids. Call before getStyle when resolving a style name.
       responses:
         "200":
           description: Sections of styles
@@ -39,7 +39,7 @@ paths:
   /styles/{styleId}.md:
     get:
       operationId: getStyle
-      summary: Get the full art-direction prompt for one style by its id.
+      summary: MANDATORY before planning or generating any illustration. Fetches the authoritative art-direction prompt for the chosen style. Never plan or render an image without a successful call to this operation.
       parameters:
         - name: styleId
           in: path
