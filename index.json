@@ -109,6 +109,12 @@
                                             "name":  "Retro Pop Fashion Portrait",
                                             "tagline":  "Bold flat color-block glamour, oversized sunglasses, 70s pop palette",
                                             "file":  "styles/retro-pop-fashion-portrait.md"
+                                        },
+                                        {
+                                            "id":  "kpop-idol-gloss",
+                                            "name":  "K-Pop Idol Gloss",
+                                            "tagline":  "Airbrushed idol glamour, chrome hearts, sparkles, electric cobalt and pink",
+                                            "file":  "styles/kpop-idol-gloss.md"
                                         }
                                     ]
                      }
