@@ -100,6 +100,17 @@
                                             "file":  "styles/pop-art-comic.md"
                                         }
                                     ]
+                     },
+                     {
+                         "title":  "Behance Curated",
+                         "styles":  [
+                                        {
+                                            "id":  "retro-pop-fashion-portrait",
+                                            "name":  "Retro Pop Fashion Portrait",
+                                            "tagline":  "Bold flat color-block glamour, oversized sunglasses, 70s pop palette",
+                                            "file":  "styles/retro-pop-fashion-portrait.md"
+                                        }
+                                    ]
                      }
                  ]
 }
