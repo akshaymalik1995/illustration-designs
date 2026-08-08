@@ -85,7 +85,7 @@ fetch('index.json').then(r => r.json()).then(({sections}) => {
           onerror="if(!this.dataset.p){this.dataset.p=1;this.src='img/${s.id}.png'}else{this.remove()}"></div>
         <div class="body">
           <h2>${s.name}</h2>
-          <code class="style-id" data-id="${s.id}" title="Click to copy id">${s.id}</code>
+          <code class="style-id" data-id="${s.id}" title="Click to copy a ready GPT command that fetches this style">${s.id}</code>
           <div class="tagline">${s.tagline}</div>
           <div class="row">
             <button class="primary" data-copy="${s.id}">Copy prompt</button>
@@ -102,7 +102,7 @@ fetch('index.json').then(r => r.json()).then(({sections}) => {
   root.addEventListener('click', async e => {
     const copy = e.target.dataset.copy, view = e.target.dataset.view, idChip = e.target.dataset.id;
     if (idChip) {
-      await navigator.clipboard.writeText(idChip);
+      await navigator.clipboard.writeText(`Call the getStyle action with styleId "${idChip}". Confirm the fetch, then plan (don't generate): `);
       const orig = e.target.textContent;
       e.target.textContent = 'copied ✓';
       setTimeout(() => e.target.textContent = orig, 1200);
