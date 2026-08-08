@@ -86,7 +86,7 @@ fetch('index.json').then(r => r.json()).then(({sections}) => {
         <div class="body">
           <h2>${s.name}</h2>
           <code class="style-id" data-id="${s.id}" title="Click to copy a ready GPT command that fetches this style">${s.id}</code>
-          <div class="tagline">${s.tagline}</div>
+          <div class="tagline">${s.tagline}${s.bestFor ? `<br><em>Best for: ${s.bestFor}</em>` : ''}</div>
           <div class="row">
             <button class="primary" data-copy="${s.id}">Copy prompt</button>
             <button data-view="${s.id}">View prompt</button>

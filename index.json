@@ -7,97 +7,113 @@
                                             "id":  "flat-vector-editorial",
                                             "name":  "Flat Vector Editorial",
                                             "tagline":  "Premium geometric flat vector, muted palette, negative space",
-                                            "file":  "styles/flat-vector-editorial.md"
+                                            "file":  "styles/flat-vector-editorial.md",
+                                            "bestFor":  "editorial articles, wellness, business concepts, website heroes"
                                         },
                                         {
                                             "id":  "hand-drawn-sketch",
                                             "name":  "Hand-Drawn Sketch",
                                             "tagline":  "Loose ink lines, marker accents, notebook charm",
-                                            "file":  "styles/hand-drawn-sketch.md"
+                                            "file":  "styles/hand-drawn-sketch.md",
+                                            "bestFor":  "explainers, personal notes, tutorials, friendly how-tos"
                                         },
                                         {
                                             "id":  "isometric",
                                             "name":  "Isometric",
                                             "tagline":  "30-degree diorama worlds, crisp vector depth",
-                                            "file":  "styles/isometric.md"
+                                            "file":  "styles/isometric.md",
+                                            "bestFor":  "tech systems, products, processes, architecture, SaaS"
                                         },
                                         {
                                             "id":  "line-art-minimal",
                                             "name":  "Minimal Line Art",
                                             "tagline":  "Monoline strokes, one accent color, vast negative space",
-                                            "file":  "styles/line-art-minimal.md"
+                                            "file":  "styles/line-art-minimal.md",
+                                            "bestFor":  "logos, elegant quotes, minimal branding, single ideas"
                                         },
                                         {
                                             "id":  "watercolor-organic",
                                             "name":  "Watercolor Organic",
                                             "tagline":  "Translucent washes, soft bleeds, paper light",
-                                            "file":  "styles/watercolor-organic.md"
+                                            "file":  "styles/watercolor-organic.md",
+                                            "bestFor":  "emotions, relationships, nature, poetry, gentle topics"
                                         },
                                         {
                                             "id":  "retro-mid-century",
                                             "name":  "Retro Mid-Century",
                                             "tagline":  "1950s poster shapes, mustard-teal palette, print grain",
-                                            "file":  "styles/retro-mid-century.md"
+                                            "file":  "styles/retro-mid-century.md",
+                                            "bestFor":  "travel, events, posters, nostalgia, culture"
                                         },
                                         {
                                             "id":  "cut-paper-collage",
                                             "name":  "Cut-Paper Collage",
                                             "tagline":  "Layered hand-cut paper, real shadows, tactile depth",
-                                            "file":  "styles/cut-paper-collage.md"
+                                            "file":  "styles/cut-paper-collage.md",
+                                            "bestFor":  "children\u0027s content, storytelling, crafts, community themes"
                                         },
                                         {
                                             "id":  "blueprint-technical",
                                             "name":  "Blueprint Technical",
                                             "tagline":  "Drafted schematics, annotations, engineered elegance",
-                                            "file":  "styles/blueprint-technical.md"
+                                            "file":  "styles/blueprint-technical.md",
+                                            "bestFor":  "engineering, how-things-work, precision topics, patents"
                                         },
                                         {
                                             "id":  "cartoon-character",
                                             "name":  "Cartoon Character",
                                             "tagline":  "Expressive characters, bold outlines, animation energy",
-                                            "file":  "styles/cartoon-character.md"
+                                            "file":  "styles/cartoon-character.md",
+                                            "bestFor":  "mascots, fun announcements, kids, humor"
                                         },
                                         {
                                             "id":  "3d-clay-render",
                                             "name":  "3D Clay Render",
                                             "tagline":  "Soft chunky 3D, matte clay, studio pastel light",
-                                            "file":  "styles/3d-clay-render.md"
+                                            "file":  "styles/3d-clay-render.md",
+                                            "bestFor":  "app features, friendly tech, product showcases"
                                         },
                                         {
                                             "id":  "geometric-abstract",
                                             "name":  "Geometric Abstract",
                                             "tagline":  "Bauhaus shapes and grids, meaning through arrangement",
-                                            "file":  "styles/geometric-abstract.md"
+                                            "file":  "styles/geometric-abstract.md",
+                                            "bestFor":  "abstract concepts, music, math, modern art topics"
                                         },
                                         {
                                             "id":  "painterly-realistic",
                                             "name":  "Painterly Digital",
                                             "tagline":  "Visible brushwork, cinematic light, atmosphere",
-                                            "file":  "styles/painterly-realistic.md"
+                                            "file":  "styles/painterly-realistic.md",
+                                            "bestFor":  "drama, atmosphere, fantasy, cinematic scenes"
                                         },
                                         {
                                             "id":  "pixel-art",
                                             "name":  "Pixel Art",
                                             "tagline":  "16-bit sprites, limited palette, deliberate pixels",
-                                            "file":  "styles/pixel-art.md"
+                                            "file":  "styles/pixel-art.md",
+                                            "bestFor":  "gaming, retro tech, nostalgia, playful data"
                                         },
                                         {
                                             "id":  "gradient-glassmorphism",
                                             "name":  "Gradient Glass",
                                             "tagline":  "Luminous gradients, frosted glass, SaaS-hero polish",
-                                            "file":  "styles/gradient-glassmorphism.md"
+                                            "file":  "styles/gradient-glassmorphism.md",
+                                            "bestFor":  "fintech, startups, futuristic products, premium SaaS"
                                         },
                                         {
                                             "id":  "infographic-dataviz",
                                             "name":  "Infographic",
                                             "tagline":  "Icons, flows, and hierarchy — information designed",
-                                            "file":  "styles/infographic-dataviz.md"
+                                            "file":  "styles/infographic-dataviz.md",
+                                            "bestFor":  "statistics, comparisons, timelines, step-by-step processes"
                                         },
                                         {
                                             "id":  "pop-art-comic",
                                             "name":  "Pop Art Comic",
                                             "tagline":  "Halftone dots, bold outlines, splash-page drama",
-                                            "file":  "styles/pop-art-comic.md"
+                                            "file":  "styles/pop-art-comic.md",
+                                            "bestFor":  "bold announcements, humor, drama, high-energy moments"
                                         }
                                     ]
                      },
@@ -108,13 +124,15 @@
                                             "id":  "retro-pop-fashion-portrait",
                                             "name":  "Retro Pop Fashion Portrait",
                                             "tagline":  "Bold flat color-block glamour, oversized sunglasses, 70s pop palette",
-                                            "file":  "styles/retro-pop-fashion-portrait.md"
+                                            "file":  "styles/retro-pop-fashion-portrait.md",
+                                            "bestFor":  "fashion, beauty, empowerment, portrait-led topics"
                                         },
                                         {
                                             "id":  "kpop-idol-gloss",
                                             "name":  "K-Pop Idol Gloss",
                                             "tagline":  "Airbrushed idol glamour, chrome hearts, sparkles, electric cobalt and pink",
-                                            "file":  "styles/kpop-idol-gloss.md"
+                                            "file":  "styles/kpop-idol-gloss.md",
+                                            "bestFor":  "music, fandom, youth culture, glamour portraits"
                                         }
                                     ]
                      }
